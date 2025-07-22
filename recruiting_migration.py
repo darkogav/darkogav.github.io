@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import pymysql
+import MySQLdb
 import sys
 import getpass
 
@@ -10,10 +10,10 @@ def main():
     
     try:
         # Connect to database
-        conn = pymysql.connect(
+        conn = MySQLdb.connect(
             host='localhost',
             user='root',
-            password=password
+            passwd=password
         )
         cursor = conn.cursor()
         
@@ -50,7 +50,7 @@ def main():
         
         print(f"\nDone! Copied {len(tables_2425)} tables and created {len(tables_2425)} new empty tables.")
         
-    except pymysql.Error as e:
+    except MySQLdb.Error as e:
         print(f"Database error: {e}")
         sys.exit(1)
     
